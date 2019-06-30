@@ -1,3 +1,7 @@
+/**
+ * Configure store for the development mode
+ * show the redux devtools in the development mode
+ */
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createHashHistory } from 'history';

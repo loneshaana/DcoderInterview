@@ -1,3 +1,7 @@
+/**
+ * API'S for creating and return the list of threads 
+ * created by a particular user
+ */
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');

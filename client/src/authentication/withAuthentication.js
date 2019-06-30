@@ -1,3 +1,7 @@
+/**
+ * Show component only when the user is logged in 
+ * otherwise show the login component
+ */
 import React from 'react';
 import Threads from '../components/threads';
 import Login from '../components/login';

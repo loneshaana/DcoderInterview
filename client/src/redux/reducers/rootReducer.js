@@ -1,3 +1,6 @@
+/**
+ * Redux reducers to returrn the mutable store
+ */
 import { combineReducers } from 'redux';
 
 const loginReducer = (state=null , action) =>{
@@ -37,9 +40,18 @@ const loaders = (state={threadsLoading:false,creatingThread:false,loggingIn:fals
     }
 }
 
+const filters = (state={filterBy:''},action) =>{
+    switch(action.type){
+        case 'FILTER_BY':
+            return{...state,filterBy:action.payload};
+        default:
+            return state;
+    }
+}
 const rootReducer = combineReducers({
     login:loginReducer,
     userThreads:userThreads,
+    filter:filters,
     loaders
 });
 

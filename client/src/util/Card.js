@@ -1,3 +1,4 @@
+// Component to show cards
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -11,9 +12,9 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles({
   card: {
     maxWidth: '100%',
-    marginTop:'2%',
-    marginLeft:'10%',
-    marginRight:'10%',
+    marginTop:'1%',
+    marginLeft:'20%',
+    marginRight:'20%',
     backgroundColor:'#f0f3f6'
     // backgroundColor:'#3d70b2'
     // backgroundColor:'#747275'

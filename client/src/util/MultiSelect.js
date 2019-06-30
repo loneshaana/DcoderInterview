@@ -12,6 +12,8 @@ export default class CreatableMulti extends Component {
     return (
       <CreatableSelect
         isMulti
+        label="tags"
+        placeholder="tags"
         onChange={this.handleChange} />
     );
   }

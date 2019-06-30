@@ -9,6 +9,7 @@ const loginRouter = require('./api/login');
 const threadRouter = require('./api/thread');
 const config = require('./configs/config');
 var app = express();
+
 const MongoStore = require('connect-mongo');
 
 process.on('uncaughtException', (err) => {
@@ -22,6 +23,10 @@ process.on('uncaughtRejection', (err, promise) => {
 // connect to the database
 mongoose.connect(config.dbConnString); // connect to the database
 const db = mongoose.connection;
+/**
+ * If we got the database connection 
+ * then start the server
+ */
 db.then(conn =>{
   app.use(require('./middlewares/cors'));
   require('./authentication/passport');
@@ -35,8 +40,16 @@ db.then(conn =>{
   // app.use(express.static(path.join(__dirname, 'public')));
   app.use(passport.initialize());
 
+  /*
+    unauthorized requests
+    as anybody can try to login or register
+  */
   app.use('/api',loginRouter);
-
+  /*
+    Middleware to authorize the requests
+    threadRouter api's will be authenticated requests
+    as only loggedIn user should make calls
+  */
   app.use(require('./middlewares/TokenValidator'));
   app.use('/api',threadRouter)
 

@@ -1,3 +1,6 @@
+/*
+    Middleware to validate the each request
+*/
 const jwt = require('jsonwebtoken');
 const config = require('../configs/config');
 
@@ -15,7 +18,6 @@ module.exports = ( req,res,next) =>{
             next();
         });
     }else{
-        console.log("No Token Provided")
         return res.status(403).send({
             "Error":true,
             "message":"No Token Provided"

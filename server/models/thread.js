@@ -1,12 +1,6 @@
-/*
-  _id
-  title
-  description
-  tags:[]
-  username:
-  date
-*/
-
+/**
+ * Database structure of the thread model
+ */
 const mongoose = require('mongoose');
 
 const Thread = new mongoose.Schema({

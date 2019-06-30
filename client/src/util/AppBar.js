@@ -1,3 +1,6 @@
+/**
+ * Navigation bar used for each component
+ */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -23,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       display: 'flex',
     },
-  },
+  }
 }));
 
 
@@ -48,12 +51,12 @@ const useStyles = makeStyles(theme => ({
         setAnchorEl(null);
         handleMobileMenuClose();
     }
-    
   
     const SideInfo = () =>{
         if(loggedUser && loggedUser.user && loggedUser.user.username){
             return (
                     <React.Fragment>
+                     
                         <div className={classes.root} />
                             <div className={classes.sectionDesktop}>
                             {loggedUser.user.username}

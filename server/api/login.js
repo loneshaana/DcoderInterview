@@ -1,3 +1,6 @@
+/**
+ * API'S for the login , register
+ */
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');

@@ -1,4 +1,7 @@
 // @flow
+/**
+ * Configurer redux for the production mode
+ */
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { createHashHistory } from 'history';
