@@ -27,7 +27,7 @@ const userThreads = (state={threads:[],error:null} , action) =>{
     }
 }
 
-const loaders = (state={threadsLoading:false,creatingThread:false,loggingIn:false} , action) =>{
+const loaders = (state={threadsLoading:false,creatingThread:false,loggingIn:false,registering:false} , action) =>{
     switch(action.type){
         case 'LOADING_THREADS':
             return {...state , threadsLoading:action.loading};
@@ -35,6 +35,8 @@ const loaders = (state={threadsLoading:false,creatingThread:false,loggingIn:fals
             return{...state,creatingThread:action.loading};
         case 'LOGGING_IN':
             return {...state,loggingIn:action.loading}
+        case 'REGISTERING':
+            return {...state,registering:action.loading}
         default:
             return state;
     }

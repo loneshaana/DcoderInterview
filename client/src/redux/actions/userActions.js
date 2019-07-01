@@ -52,17 +52,18 @@ export const LoginAction = (data,cookies) =>{
 
 export const RegisterAction = (data) =>{
     return (dispatch) =>{
+        dispatch({type:"REGISTERING",loading:true});
         return DCoderPost('/api/register' , (data))
             .then( (response) =>{
                 if(response.status === 200){
-                    const {data} = response;
-                    console.log("REGISTERED")
+                    // const {data} = response;
+                    dispatch({type:"REGISTERING",loading:false});
                     return true;
-                    //registered
                 }else{
                     throw new Error("Unable to register the user");
                 }
             }).catch(error =>{
+                dispatch({type:"REGISTERING",loading:false});
                 return false;
             })
     }

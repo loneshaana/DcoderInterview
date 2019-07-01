@@ -13,6 +13,7 @@ module.exports = ( req,res,next) =>{
             if(err){
                 return res.json({"Error":true,"message":"Failed To authenticate token"});
             }
+            console.log(decoded)
             req.decoded = decoded;
             req.body.userId = Object.keys(decoded)[0];
             next();

@@ -8,6 +8,7 @@ const passport = require('passport');
 const loginRouter = require('./api/login');
 const threadRouter = require('./api/thread');
 const config = require('./configs/config');
+const TokenValidator = require('./middlewares/tokenvalidator');
 var app = express();
 
 const MongoStore = require('connect-mongo');
@@ -28,6 +29,7 @@ const db = mongoose.connection;
  * then start the server
  */
 db.then(conn =>{
+
   app.use(require('./middlewares/cors'));
   require('./authentication/passport');
   global.User = require('./models/user');
@@ -40,6 +42,7 @@ db.then(conn =>{
   // app.use(express.static(path.join(__dirname, 'public')));
   app.use(passport.initialize());
 
+
   /*
     unauthorized requests
     as anybody can try to login or register
@@ -50,7 +53,7 @@ db.then(conn =>{
     threadRouter api's will be authenticated requests
     as only loggedIn user should make calls
   */
-  app.use(require('./middlewares/TokenValidator'));
+  app.use(TokenValidator);
   app.use('/api',threadRouter)
 
   // catch 404 and forward to error handler
@@ -71,6 +74,7 @@ db.then(conn =>{
 })
 .catch(err =>{
   console.log("ERROR CONNECTING DATABASE,CHECK MONGO IS RUNNING ")
+  console.warn(err);
   process.exit(1);
 })
 // console.log("db" ,db)

@@ -43,6 +43,7 @@ class Register extends React.Component{
 
   render(){
     const {username,password,invalidPassword,cpassword} = this.state;
+    const {registering} = this.props;
     return(
       <React.Fragment>
         <div className="login-box">
@@ -64,7 +65,11 @@ class Register extends React.Component{
                     <span>please check your password</span>
                 </div>
             )}
-            <button className="btn" onClick={this.signup}>signup</button>
+            {registering ? (
+              <button className="btn">Registering...</button>
+            ) :(
+              <button className="btn" onClick={this.signup}>signup</button>
+            )}
             </div>
         </React.Fragment>
     )
@@ -73,7 +78,8 @@ class Register extends React.Component{
 
 
  const mapStateToProps  =(state) =>({
-  loggedInUser:state.login
+  loggedInUser:state.login,
+  registering:state.loaders.registering
  });
 
  const mapDispatchToProps = (dispatch) =>({
